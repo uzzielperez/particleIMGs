@@ -12,3 +12,8 @@ This repository contains the code for training and evaluating a Convolutional Ne
     h5py
     Matplotlib
     scikit-learn
+    
+## Installation
+
+git clone https://github.com/your-username/your-repository.git
+cd your-repository
