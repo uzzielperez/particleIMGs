@@ -15,5 +15,3 @@ This repository contains the code for training and evaluating a Convolutional Ne
     
 ## Installation
 
-git clone https://github.com/your-username/your-repository.git
-cd your-repository
