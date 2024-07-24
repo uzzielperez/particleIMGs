@@ -23,10 +23,22 @@ doGPU       = True    # Use GPU
 
 if doGPU:
     import tensorflow as tf
-    from keras.backend.tensorflow_backend import set_session
-    config = tf.ConfigProto()
-    config.gpu_options.allow_growth=True
-    set_session(tf.Session(config=config))
+
+    # Create a TensorFlow config object
+    config = tf.config.experimental.set_memory_growth
+
+    # Set GPU memory growth
+    gpus = tf.config.list_physical_devices('GPU')
+    if gpus:
+        try:
+            # Restrict TensorFlow to only use the first GPU
+            tf.config.set_visible_devices(gpus[0], 'GPU')
+            # Allow memory growth for the GPU
+            tf.config.experimental.set_memory_growth(gpus[0], True)
+        except RuntimeError as e:
+            # Memory growth must be set before GPUs have been initialized
+            print(e)
+
 
 ## Load Data
 img_rows, img_cols, nb_channels = 32, 32, 2
